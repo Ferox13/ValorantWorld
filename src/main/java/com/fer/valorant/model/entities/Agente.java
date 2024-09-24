@@ -1,6 +1,10 @@
 package com.fer.valorant.model.entities;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import org.hibernate.annotations.ManyToAny;
 
 import com.fer.valorant.model.enumerated.Rol;
 
@@ -13,6 +17,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -31,6 +36,11 @@ public class Agente {
     private String pais;
     @OneToMany(mappedBy = "poseedor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Habilidad> habilidades;
+    @ManyToMany(mappedBy = "agentes", fetch = FetchType.EAGER)
+    Set<Jugador> jugadores = new HashSet<>();
+    @OneToMany(mappedBy = "agente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Partida> partidas;
+
 
     public Agente() {
     }
@@ -65,6 +75,20 @@ public class Agente {
         this.rol = rol;
         this.ultimate = ultimate;
         this.pais = pais;
+    }
+
+   
+
+    public Agente(Long idAgente, String nombre, Rol rol, String ultimate, String pais, List<Habilidad> habilidades,
+            Set<Jugador> jugadores, List<Partida> partidas) {
+        this.idAgente = idAgente;
+        this.nombre = nombre;
+        this.rol = rol;
+        this.ultimate = ultimate;
+        this.pais = pais;
+        this.habilidades = habilidades;
+        this.jugadores = jugadores;
+        this.partidas = partidas;
     }
 
     public Long getIdAgente() {
@@ -113,12 +137,6 @@ public class Agente {
 
     public void sethabilidades(List<Habilidad> habilidades) {
         this.habilidades = habilidades;
-    }
-
-    @Override
-    public String toString() {
-        return "Agente [idAgente=" + idAgente + ", nombre=" + nombre + ", rol=" + rol + ", ultimate=" + ultimate
-                + ", pais=" + pais + ", habilidades=" + habilidades + "]";
     }
     
 
