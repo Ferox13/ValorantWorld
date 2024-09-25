@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.annotations.ManyToAny;
-
 import com.fer.valorant.model.enumerated.Rol;
 
 import jakarta.persistence.CascadeType;
@@ -28,6 +26,7 @@ public class Agente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long idAgente;
+    @Column(length = 55, nullable = false, unique = true)
     private String nombre;
     @Enumerated(EnumType.STRING)
     @Column(name = "rol", columnDefinition = "ENUM('CENTINELA','INICIADOR','DUELISTA','CONTROLADOR')")
@@ -40,7 +39,6 @@ public class Agente {
     Set<Jugador> jugadores = new HashSet<>();
     @OneToMany(mappedBy = "agente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Partida> partidas;
-
 
     public Agente() {
     }
@@ -76,8 +74,6 @@ public class Agente {
         this.ultimate = ultimate;
         this.pais = pais;
     }
-
-   
 
     public Agente(Long idAgente, String nombre, Rol rol, String ultimate, String pais, List<Habilidad> habilidades,
             Set<Jugador> jugadores, List<Partida> partidas) {
@@ -137,6 +133,12 @@ public class Agente {
 
     public void sethabilidades(List<Habilidad> habilidades) {
         this.habilidades = habilidades;
+    }
+
+    @Override
+    public String toString() {
+        return "Agente [idAgente=" + idAgente + ", nombre=" + nombre + ", rol=" + rol + ", ultimate=" + ultimate
+                + ", pais=" + pais + ", habilidades=" + habilidades + ", jugadores=" + jugadores  + "]";
     }
     
 

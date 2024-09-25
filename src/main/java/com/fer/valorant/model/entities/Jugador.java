@@ -1,7 +1,6 @@
 package com.fer.valorant.model.entities;
 
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,6 +18,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "jugadores")
@@ -34,6 +35,7 @@ public class Jugador {
     private String nacionalidad;
     @Column(unique = true)
     private String apodo;
+    @Temporal(TemporalType.DATE)
     private LocalDate fechaNacimiento;
     @ManyToAny(fetch = FetchType.EAGER)
     @JoinTable(name = "jugadores_agentes", joinColumns = @JoinColumn(name = "jugador_id"), inverseJoinColumns = @JoinColumn(name = "agente_id"))

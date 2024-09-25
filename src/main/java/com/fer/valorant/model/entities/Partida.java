@@ -2,8 +2,6 @@ package com.fer.valorant.model.entities;
 
 import java.time.LocalDate;
 
-import org.springframework.data.repository.query.parser.Part;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +27,5 @@ public class Partida {
     private Agente agente;
     @Column(columnDefinition = "DATETIME", nullable = false)
     private LocalDate fecha;
-    
-
 
 }

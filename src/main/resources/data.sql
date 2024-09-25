@@ -1,15 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 04-07-2024 a las 10:08:03
--- Versión del servidor: 8.0.27
--- Versión de PHP: 7.4.26
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
 
 
 INSERT INTO `agentes` (`id`, `nombre`, `rol`, `ultimate`, `pais`) VALUES
@@ -38,16 +27,6 @@ INSERT INTO `agentes` (`id`, `nombre`, `rol`, `ultimate`, `pais`) VALUES
 (23, 'Fade', 'INICIADOR', 'Anochecer', 'Turquía'),
 (24, 'Neon', 'DUELISTA', 'Potencia Maxima', 'Filipinas');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `habilidades`
---
-
-
---
--- Volcado de datos para la tabla `habilidades`
---
 
 INSERT INTO `habilidades` (`id`, `nombre`, `descripcion`, `poseedor`) VALUES
 (1, 'FULGOR', 'EQUIPA una carga cegadora y DISPARA para lanzar una ráfaga de acción rápida a través de una pared. La carga detonará y cegará a todos los jugadores que la vean.', 1),
@@ -124,11 +103,6 @@ INSERT INTO `habilidades` (`id`, `nombre`, `descripcion`, `poseedor`) VALUES
 (72, 'CARRIL RAPIDO', 'DISPARA dos líneas de energía hacia adelante por el suelo que se extienden por una corta distancia o hasta golpear contra una superficie. Las líneas se convierten en paredes de electricidad estática que bloquean la visión y dañan a cualquier enemigo que quiera atravesarlas.', 24);
 
 
-
---
--- Volcado de datos para la tabla `jugadores`
---
-
 INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `edad`, `email`, `nacionalidad`, `apodo`, `fechaNacimiento`) VALUES
 (1, 'Nikita', 'Sirmitev', 21, 'DERKE@FNATIC.COM', 'FINLANDES', 'DERKE', '2003-02-06'),
 (2, 'Timofey', 'Khromov', 21, 'CHRONICLE@FNATIC.COM', 'RUSO', 'CHRONICLE', '2002-08-16'),
@@ -136,10 +110,6 @@ INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `edad`, `email`, `nacionali
 (4, 'Adolfo', 'Gallego', 24, 'FIT1NHO@GIANTX.COM', 'ESPAÑOL', 'FIT1NHO', '2000-02-08'),
 (5, 'Oscar', 'Cañellas', 28, 'MIXWELL@STREAMING.ES', 'ESPAÑOL', 'MIXWELL', '1995-10-10');
 
--- --------------------------------------------------------
-
--- Volcado de datos para la tabla `jugadores_agentes`
---
 
 INSERT INTO `jugadores_agentes` (`id`, `jugador_id`, `agente_id`, `fecha`) VALUES
 (1, 3, 1, '2024-07-01 12:00:00'),
@@ -159,4 +129,3 @@ INSERT INTO `jugadores_agentes` (`id`, `jugador_id`, `agente_id`, `fecha`) VALUE
 (15, 3, 16, '2024-07-22 12:00:00'),
 (16, 5, 17, '2024-07-24 00:00:00'),
 (17, 5, 18, '2024-07-25 12:00:00');
-

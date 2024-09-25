@@ -24,7 +24,7 @@ private String nombre;
 @Lob
 @Column(columnDefinition = "TEXT",nullable = false)
 private String descripcion;
-@ManyToOne(targetEntity = Agente.class, optional = true, fetch = FetchType.LAZY)
+@ManyToOne(targetEntity = Agente.class, optional = true, fetch = FetchType.EAGER)
 @JoinColumn(name = "poseedor", referencedColumnName = "id")
 @JsonIgnore
 private Agente poseedor;
