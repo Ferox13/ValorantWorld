@@ -46,6 +46,7 @@ public class ValorantWorldApplication implements CommandLineRunner {
 		}
 
 		System.out.println("Agentes con rol CENTINELA: " + agentesService.findByRol(Rol.CENTINELA));
+		System.out.println("++++++++++++++++++++++++++++++++++++" + agentesService.findByNombreAndPaisAndRol("Breach","Suecia",Rol.INICIADOR));
 		//System.in.read(); 
 
 	}

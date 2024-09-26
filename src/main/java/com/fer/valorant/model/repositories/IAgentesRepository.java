@@ -7,6 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.fer.valorant.model.entities.Agente;
 import com.fer.valorant.model.enumerated.Rol;
 
-public interface IAgentesRepository extends JpaRepository<Agente,Long>{
- List<Agente> findByRol(Rol rol);
+public interface IAgentesRepository extends JpaRepository<Agente, Long> {
+    List<Agente> findByRol(Rol rol);
+
+    Agente findByNombreAndPaisAndRol(String nombre, String pais,Rol rol);
+
 }

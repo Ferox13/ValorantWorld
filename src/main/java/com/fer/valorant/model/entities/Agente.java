@@ -140,6 +140,11 @@ public class Agente {
         return "Agente [idAgente=" + idAgente + ", nombre=" + nombre + ", rol=" + rol + ", ultimate=" + ultimate
                 + ", pais=" + pais + ", habilidades=" + habilidades + ", jugadores=" + jugadores  + "]";
     }
+
+    public Agente orElseThrow(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'orElseThrow'");
+    }
     
 
 }

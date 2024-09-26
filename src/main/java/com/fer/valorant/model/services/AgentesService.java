@@ -37,4 +37,8 @@ public class AgentesService {
     public List<Agente> findByRol(Rol rol){
         return agentesRepository.findByRol(rol);
     }
+    public Agente findByNombreAndPaisAndRol(String nombre, String pais,Rol rol){
+        return agentesRepository.findByNombreAndPaisAndRol(nombre, pais, rol);
+    }
+ 
 }
