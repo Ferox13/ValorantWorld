@@ -30,6 +30,12 @@ public class AgentesService {
     public Agente insertAgente(Agente agente){
         return agentesRepository.save(agente);
     }
+    public Agente insertAgenteWithSKill(Agente agente){
+        if (agente.gethabilidades().get(0).getPoseedor() == null) {
+            agente.gethabilidades().get(0).setPoseedor(agente);     
+        }
+        return agentesRepository.save(agente);
+    }
 
     public Agente updateAgente(Agente agente){
         return agentesRepository.save(agente);

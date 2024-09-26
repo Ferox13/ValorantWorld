@@ -23,7 +23,7 @@ public class ValorantWorldApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println(agentesService.findAll());
+	/* 	System.out.println(agentesService.findAll());
 		System.out.println(agentesService.countAgentes());
 
 		Optional<Agente> agenteOptional = agentesService.findById((long) 2);
@@ -47,7 +47,7 @@ public class ValorantWorldApplication implements CommandLineRunner {
 
 		System.out.println("Agentes con rol CENTINELA: " + agentesService.findByRol(Rol.CENTINELA));
 		System.out.println("++++++++++++++++++++++++++++++++++++" + agentesService.findByNombreAndPaisAndRol("Breach","Suecia",Rol.INICIADOR));
-		//System.in.read(); 
+		 */
 
 	}
 
