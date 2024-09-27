@@ -46,5 +46,9 @@ public class AgentesService {
     public Agente findByNombreAndPaisAndRol(String nombre, String pais,Rol rol){
         return agentesRepository.findByNombreAndPaisAndRol(nombre, pais, rol);
     }
+
+    public void deleteAgente(Agente agente){
+        agentesRepository.delete(agente);;
+    }
  
 }

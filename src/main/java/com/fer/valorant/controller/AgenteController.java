@@ -1,9 +1,11 @@
 package com.fer.valorant.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,7 +66,7 @@ public class AgenteController {
       }
         
     }
-    @PostMapping("/agente/s")
+    @PostMapping("/agente/skill")
     public ResponseEntity<Agente> insertarAgenteWithSKill(@RequestBody Agente agente) {
       try {
         Agente nuevoAgente = service.insertAgenteWithSKill(agente);
@@ -75,5 +77,22 @@ public class AgenteController {
       }
         
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Agente> deleteUser(@PathVariable Long id) {
+      try {
+        Optional<Agente> agenteOptional = service.findById(id);
+        if(agenteOptional.isPresent()){
+          service.deleteAgente(agenteOptional.get());
+        }else{
+          throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agente no encontrado");
+
+        }
+        return new ResponseEntity<>(agenteOptional.get(), HttpStatus.OK);
+
+      } catch (Exception e) {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agente no encontrado", e);
+      }
+     
+  }
 
 }
