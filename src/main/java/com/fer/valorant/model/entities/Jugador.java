@@ -38,7 +38,9 @@ public class Jugador {
     @Temporal(TemporalType.DATE)
     private LocalDate fechaNacimiento;
     @ManyToAny(fetch = FetchType.EAGER)
-    @JoinTable(name = "jugadores_agentes", joinColumns = @JoinColumn(name = "jugador_id"), inverseJoinColumns = @JoinColumn(name = "agente_id"))
+    @JoinTable(name = "jugadores_partidas", 
+    joinColumns = @JoinColumn(name = "jugador_id"), 
+    inverseJoinColumns = @JoinColumn(name = "agente_id"))
     private Set<Agente> agentes = new HashSet<>();
     @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Partida> partidas;

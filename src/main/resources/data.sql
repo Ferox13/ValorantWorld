@@ -111,7 +111,7 @@ INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `edad`, `email`, `nacionali
 (5, 'Oscar', 'Cañellas', 28, 'MIXWELL@STREAMING.ES', 'ESPAÑOL', 'MIXWELL', '1995-10-10');
 
 
-INSERT INTO `jugadores_agentes` (`id`, `jugador_id`, `agente_id`, `fecha`) VALUES
+INSERT INTO `jugadores_partidas` (`id`, `jugador_id`, `agente_id`, `fecha`) VALUES
 (1, 3, 1, '2024-07-01 12:00:00'),
 (2, 4, 1, '2024-07-03 00:00:00'),
 (3, 2, 3, '2024-07-04 12:00:00'),
