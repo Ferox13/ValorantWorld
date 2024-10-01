@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.ManyToAny;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -42,6 +44,7 @@ public class Jugador {
     joinColumns = @JoinColumn(name = "jugador_id"), 
     inverseJoinColumns = @JoinColumn(name = "agente_id"))
     private Set<Agente> agentes = new HashSet<>();
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Partida> partidas;
 
