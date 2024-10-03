@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
 import com.fer.valorant.converters.StringToRolConverter;
+import com.fer.valorant.model.dto.AgenteDTO;
 import com.fer.valorant.model.entities.Agente;
 import com.fer.valorant.model.services.AgentesService;
 
@@ -38,9 +38,9 @@ public class AgenteController {
   }
 
   @GetMapping("/{id}")
-  Agente one(@PathVariable("id") Long id) {
+  AgenteDTO one(@PathVariable("id") Long id) {
     try {
-      return service.findById((Long) id).get();
+      return service.getAgenteById((Long) id);
     } catch (Exception e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agente no encontrado", e);
     }
@@ -55,44 +55,47 @@ public class AgenteController {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agente no encontrado", e);
     }
   }
+
   @PostMapping("/agente")
-    public ResponseEntity<Agente> insertarAgente(@RequestBody Agente agente) {
-      try {
-        Agente nuevoAgente = service.insertAgente(agente);
-        return new ResponseEntity<>(nuevoAgente, HttpStatus.CREATED);
+  public ResponseEntity<Agente> insertarAgente(@RequestBody Agente agente) {
+    try {
+      Agente nuevoAgente = service.insertAgente(agente);
+      return new ResponseEntity<>(nuevoAgente, HttpStatus.CREATED);
 
-      } catch (Exception e) {
-        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED, "Agente insertado", e);
-      }
-        
+    } catch (Exception e) {
+      throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED, "Agente insertado", e);
     }
-    @PostMapping("/agente/skill")
-    public ResponseEntity<Agente> insertarAgenteWithSKill(@RequestBody Agente agente) {
-      try {
-        Agente nuevoAgente = service.insertAgenteWithSKill(agente);
-        return new ResponseEntity<>(nuevoAgente, HttpStatus.CREATED);
 
-      } catch (Exception e) {
-        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED, "Agente insertado", e);
-      }
-        
+  }
+
+  @PostMapping("/agente/skill")
+  public ResponseEntity<Agente> insertarAgenteWithSKill(@RequestBody Agente agente) {
+    try {
+      Agente nuevoAgente = service.insertAgenteWithSKill(agente);
+      return new ResponseEntity<>(nuevoAgente, HttpStatus.CREATED);
+
+    } catch (Exception e) {
+      throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED, "Agente insertado", e);
     }
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Agente> deleteUser(@PathVariable Long id) {
-      try {
-        Optional<Agente> agenteOptional = service.findById(id);
-        if(agenteOptional.isPresent()){
-          service.deleteAgente(agenteOptional.get());
-        }else{
-          throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agente no encontrado");
 
-        }
-        return new ResponseEntity<>(agenteOptional.get(), HttpStatus.OK);
+  }
 
-      } catch (Exception e) {
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agente no encontrado", e);
+  @DeleteMapping("/delete/{id}")
+  public ResponseEntity<Agente> deleteUser(@PathVariable Long id) {
+    try {
+      Optional<Agente> agenteOptional = service.findById(id);
+      if (agenteOptional.isPresent()) {
+        service.deleteAgente(agenteOptional.get());
+      } else {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agente no encontrado");
+
       }
-     
+      return new ResponseEntity<>(agenteOptional.get(), HttpStatus.OK);
+
+    } catch (Exception e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agente no encontrado", e);
+    }
+
   }
 
 }
