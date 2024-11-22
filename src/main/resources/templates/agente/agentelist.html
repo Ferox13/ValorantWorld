@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lista de Agentes</title>
+    </head>
+    <body>
+        <h1>Lista de Agentes</h1>
+        <ul>
+            <li th:each="agente : ${agentes}" th:text="${agente.nombre}"></li>
+        </ul>
+        <h2 th:if="${agente != null}" th:text="${agente.nombre}"></h2>
+    </body>
+</html>

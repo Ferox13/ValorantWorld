@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 
 import com.fer.valorant.model.dto.AgenteDTO;
 import com.fer.valorant.model.entities.Agente;
-import com.fer.valorant.model.services.AgentesService;
+import com.fer.valorant.model.services.implementations.AgentesService;
 
 @Mapper(componentModel = "spring", uses = AgentesService.class)
 public interface AgenteMapper {

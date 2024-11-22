@@ -3,6 +3,7 @@ package com.fer.valorant.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,19 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import com.fer.valorant.converters.StringToRolConverter;
-import com.fer.valorant.model.dto.AgenteDTO;
 import com.fer.valorant.model.entities.Agente;
-import com.fer.valorant.model.services.AgentesService;
+import com.fer.valorant.model.services.implementations.AgentesService;
 
 @RestController
-@RequestMapping("/agentes")
-
+@RequestMapping("/agentess")
 public class AgenteController {
-  public AgentesService service;
-
-  AgenteController(AgentesService service) {
-    this.service = service;
-  }
+@Autowired
+AgentesService service;
 
   @GetMapping("/all")
   List<Agente> all() {
@@ -38,9 +34,9 @@ public class AgenteController {
   }
 
   @GetMapping("/{id}")
-  AgenteDTO one(@PathVariable("id") Long id) {
+  Agente one(@PathVariable("id") Long id) {
     try {
-      return service.getAgenteById((Long) id);
+      return service.getAgenteById2((Long) id);
     } catch (Exception e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agente no encontrado", e);
     }

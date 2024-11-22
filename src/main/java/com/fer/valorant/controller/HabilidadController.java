@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.fer.valorant.model.entities.Habilidad;
-import com.fer.valorant.model.services.HabilidadService;
+import com.fer.valorant.model.services.implementations.HabilidadService;
 
 @RestController
 public class HabilidadController {

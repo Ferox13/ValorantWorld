@@ -1,4 +1,4 @@
-package com.fer.valorant.model.services;
+package com.fer.valorant.model.services.implementations;
 
 import java.util.List;
 

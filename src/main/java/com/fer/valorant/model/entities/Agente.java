@@ -7,6 +7,7 @@ import java.util.Set;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fer.valorant.model.enumerated.Rol;
 
 import jakarta.persistence.CascadeType;
@@ -38,6 +39,7 @@ public class Agente {
     private String pais;
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "poseedor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Habilidad> habilidades;
     @ManyToMany(mappedBy = "agentes", fetch = FetchType.EAGER)
     Set<Jugador> jugadores = new HashSet<>();

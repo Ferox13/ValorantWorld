@@ -1,5 +1,6 @@
 package com.fer.valorant.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -26,7 +27,7 @@ private String nombre;
 private String descripcion;
 @ManyToOne(targetEntity = Agente.class, optional = true, fetch = FetchType.EAGER)
 @JoinColumn(name = "poseedor", referencedColumnName = "id")
-@JsonIgnore
+@JsonBackReference
 private Agente poseedor;
 
 public Habilidad() {
